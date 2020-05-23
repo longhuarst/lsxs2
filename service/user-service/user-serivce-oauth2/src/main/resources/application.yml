@@ -1,0 +1,31 @@
+server:
+  port: 22000
+
+spring:
+  application:
+    name: User-Service-Oauth2.0
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+    show-sql: true
+  rabbitmq:
+    host: 127.0.0.1
+    port: 18100
+    username: admin
+    password: admin
+  mqtt:
+    url: tcp://www.hongyiweichuang.com:1883
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:18001/eureka/ # eureka server的地址

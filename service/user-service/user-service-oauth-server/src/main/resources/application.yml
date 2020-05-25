@@ -24,6 +24,18 @@ spring:
     password: admin
   mqtt:
     url: tcp://www.hongyiweichuang.com:1883
+  mail:
+    host: smtp.163.com
+    username: lsxweb@163.com
+    password: EDPTSLZATLTKYFQD
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
 
 eureka:
   client:

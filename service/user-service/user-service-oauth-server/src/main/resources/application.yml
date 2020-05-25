@@ -1,9 +1,9 @@
 server:
-  port: 22000
+  port: 24000
 
 spring:
   application:
-    name: User-Service-Oauth2.0
+    name: User-Service-Oauth2.0-Server
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
@@ -44,13 +44,3 @@ encrypt:
     alias: lsx
     #证书的密码
     password: lsxlsx
-
-
-auth:
-  ttl: 3600 #token存储到redis的过期时间
-  clientId: lsx
-  #客户端密钥
-  clientSecret: lsxlsx
-  cookieDomain: localhost
-  cookieMaxAge: -1
-

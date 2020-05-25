@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/service/device-service/device-service-store/pom.xml" />
         <option value="$PROJECT_DIR$/service/user-service/user-serivce-oauth2/pom.xml" />
         <option value="$PROJECT_DIR$/service/device-service/device-service-analyze-backed/pom.xml" />
+        <option value="$PROJECT_DIR$/service/user-service/user-service-oauth-server/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -18,6 +19,7 @@
         <option value="$PROJECT_DIR$/service/device-service/device-server-store-boot/pom.xml" />
         <option value="$PROJECT_DIR$/service/pom.xml" />
         <option value="$PROJECT_DIR$/service/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/service/user-service/user-service-oauth2-server/pom.xml" />
       </set>
     </option>
   </component>

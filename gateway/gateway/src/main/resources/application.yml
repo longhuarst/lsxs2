@@ -1,0 +1,178 @@
+spring:
+  application:
+    name: lsx-gateway-web
+  #配置跨域
+  cloud:
+    gateway:
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]': #匹配所有请求
+#            allowedOrigins: "*" #跨域处理 允许所有的域
+#            allowedMethods: #支持的方法
+#            - GET
+#            - POST
+#            - PUT
+#            - DELETE
+      #配置路由
+      routes:
+#      - id: lsx_service_file_route
+#        uri: lb://lsx-service-file
+#        predicates:
+#          - Path=/file/**
+#        filters:
+#          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#      - id: lsx_fastdfs_route
+#        uri: http://10.211.55.10:8080
+#        predicates:
+#          - Path=/fastdfs/**
+#        filters:
+#          - StripPrefix=1
+#          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      #唯一标识符
+#      - id: lsx_eureka_route
+#        #用户请求需要路由到该服务【指定要路由的服务】
+#        #uri: http://localhost:18881
+#        #lb:使用LoadBalancerClient 实现负载均衡， 后面跟的是微服务的名称【主要用于集群环境】
+#        #uri: lb://lsx-eureka
+#        uri: http://localhost:18881
+#        #路由断言，路由规则配置
+#        predicates:
+#        #用户请求的域名匹配配置，所有以lhc.com的请求都将被路由到 uri 指定的微服务去
+##          - Host=lhc.com**
+#        #路径过滤
+#        #所有以/eureka开始的请求，都路由到http://localhost:18881微服务
+#        - Path=/eureka/**
+#
+#        filters:
+#        #将请求路径中的第一个路径去掉，请求路径以/区分，一个/代表一个路径
+#        - StripPrefix=1
+        #增加前缀
+        #- PrefixPath=/xxx
+#      - id: lsx_service_test_route
+#        uri: http://localhost:18882
+#        predicates:
+#          - Path=/test/**
+#        filters:
+#          #局部限流过滤器
+#          - name: RequestRateLimiter #请求数限流，名字不能随便写，使用默认factory
+#            args: #参数
+#              key-resolver: "#{@ipKeyResolver}" #用户唯一识别标识符
+#              redis-rate-limiter.replenishRate: 10 #每秒钟只允许 10 个请求
+#              redis-rate-limiter.burstCapacity: 4 #允许并发有的请求【宽限的个数】
+#      - id: lsx_service_user_route
+#        uri: lb://lsx-service-user
+#        predicates:
+#          - Path=/user/**
+#        filters:
+#          - StripPrefix=1
+##          #增加前缀
+##          - PrefixPath=/user
+      - id: User-Service-Oauth2.0
+        uri: lb://User-Service-Oauth2.0
+        predicates:
+          - Path=/oauth/**
+        filters:
+          - StripPrefix=1
+          #去除 重复的 cors 跨域字段
+          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#      - id: lsx_service_device_route
+#        uri: lb://lsx-service-device
+#        predicates:
+#          - Path=/device/**
+#        filters:
+#          #去除 重复的 cors 跨域字段
+#          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            # 允许携带认证信息
+            # 允许跨域的源(网站域名/ip)，设置*为全部
+            # 允许跨域请求里的head字段，设置*为全部
+            # 允许跨域的method， 默认为GET和OPTIONS，设置*为全部
+            # 跨域允许的有效期
+            allow-credentials: true
+            allowed-origins: "*"
+#              - "http://localhost:13009"
+#              - "http://localhost:13010"
+            allowed-headers: "*"
+            allowed-methods: "*"
+#              - OPTIONS
+#              - GET
+#              - POST
+            max-age: 3600
+            # 允许response的head信息
+            # 默认仅允许如下6个：
+            #     Cache-Control
+            #     Content-Language
+            #     Content-Type
+            #     Expires
+            #     Last-Modified
+            #     Pragma
+            #exposed-headers:
+  redis:
+    host: localhost
+    port: 16379
+    jedis:
+      pool:
+        max-wait: 30000
+        max-active: 100
+        max-idle: 20
+        min-idle: 0
+    timeout: 3000
+
+
+
+
+
+#
+#spring:
+#  application:
+#    name: lsx-gateway-web
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: blog
+#        uri: http://localhost:18882
+#        predicates:
+#          # 匹配路径转发
+#        - Path=/test
+
+
+server:
+  port: 20000
+  #端口
+#  ssl:
+#    key-store: public.key
+#    key-alias: lsx
+#    key-store-password: lsxlsx
+
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+    web:
+      exposure:
+        ##暴露gateway端点
+        include: gateway
+  endpoints:
+    web:
+      exposure:
+        include:
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:18001/eureka
+  instance:
+    prefer-ip-address: true
+
+
+
+
+
+debug: true
+
+
+
+

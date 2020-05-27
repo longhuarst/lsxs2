@@ -11,6 +11,7 @@
         <module name="common" />
         <module name="device-service-netty" />
         <module name="eureka" />
+        <module name="lsx-gateway" />
         <module name="user-serivce-oauth2" />
         <module name="oauth" />
         <module name="dss" />
@@ -43,6 +44,7 @@
       <module name="device-service-store" options="-parameters" />
       <module name="dss" options="-parameters" />
       <module name="eureka" options="-parameters" />
+      <module name="lsx-gateway" options="-parameters" />
       <module name="oauth" options="-parameters" />
       <module name="user-serivce-oauth2" options="-parameters" />
       <module name="user-service-oauth-server" options="-parameters" />

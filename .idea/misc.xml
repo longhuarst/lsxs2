@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/service/user-service/user-serivce-oauth2/pom.xml" />
         <option value="$PROJECT_DIR$/service/device-service/device-service-analyze-backed/pom.xml" />
         <option value="$PROJECT_DIR$/service/user-service/user-service-oauth-server/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/gateway/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
